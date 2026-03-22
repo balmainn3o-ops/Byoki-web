@@ -75,7 +75,7 @@ const PRODS = [
   {id:3,name:'BAROQUE CARGO',desc:'Relaxed cargo cut. Red satin liner. Byoki patch pocket.',price:0.00,tag:null,sizes:['S','M','L'],emoji:'🖤',grad:'linear-gradient(135deg,#1a0808,#0d0d0d)'},
   {id:4,name:'DYNASTY JACKET',desc:'Coach silhouette. Gold chain detail. Satin interior.',price:0.00,tag:'LIMITED',tagType:'gold',sizes:['M','L','XL'],emoji:'🌑',grad:'linear-gradient(135deg,#0e0a00,#0d0d0d)'},
   {id:5,name:'ANGEL CAP',desc:'6-panel structured. Byoki kanji embroidered. Gold strapback.',price:0.00,tag:null,sizes:['ONE SIZE'],emoji:'👑',grad:'linear-gradient(135deg,#160808,#111)'},
-  {id:6,name:'MONEY CREWNECK',desc:'Glow-in-dark stack print. Heavyweight fleece. Dropped shoulder.',price:1100,tag:'NEW',sizes:['S','M','L','XL','XXL'],emoji:'⚡',grad:'linear-gradient(135deg,#0e0800,#080808)'},
+  {id:6,name:'MONEY CREWNECK',desc:'Glow-in-dark stack print. Heavyweight fleece. Dropped shoulder.',price:0.00,tag:'NEW',sizes:['S','M','L','XL','XXL'],emoji:'⚡',grad:'linear-gradient(135deg,#0e0800,#080808)'},
   {id:7,name:'RED SOUL BUCKET',desc:'Washed canvas. All-over graphic print. Reversible.',price:0.00,tag:null,sizes:['S/M','L/XL'],emoji:'🌀',grad:'linear-gradient(135deg,#1a0505,#0d0d0d)'},
   {id:8,name:'GRAFFITI TOTE',desc:'Natural canvas. Screen-printed. Heavy-duty woven handles.',price:0.00,tag:null,sizes:['ONE SIZE'],emoji:'🛍️',grad:'linear-gradient(135deg,#111,#1a1a1a)'},
 ];
