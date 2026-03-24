@@ -161,7 +161,7 @@ ul { list-style: none; }
 /* Right side blue panel */
 .hero::after {
   content: '';
-  background: var(--accent);
+  background-image: url("https://t3.ftcdn.net/jpg/13/78/83/90/240_F_1378839061_xTwSyP2oNywKJVsJ1BNcBocHzYLGuI5R.jpg");
   display: block;
 }
 
