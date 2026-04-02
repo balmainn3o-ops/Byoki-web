@@ -162,10 +162,12 @@ ul { list-style: none; }
   right: 0;
   width: 50%;
   height: 100%;
-  background-image: url("https://t4.ftcdn.net/jpg/04/19/26/97/240_F_419269782_9LsP3TQndMVnZ2j3ZhTPhMjaqQpFAth9.jpg");
+  background-image: url("https://t3.ftcdn.net/jpg/13/78/83/90/240_F_1378839061_xTwSyP2oNywKJVsJ1BNcBocHzYLGuI5R.jpg");
   background-position: center;
-  background-size: cover;
+ background-size: contain;
+ background-color: #070a13; /* fills empty space nicely */
   background-repeat: no-repeat;
+  display: flex;
   z-index: 1;
 }
 
