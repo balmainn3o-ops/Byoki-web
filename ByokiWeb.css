@@ -97,17 +97,6 @@ body {
 .corner-bl { bottom: 30px; left: 30px; transform: scaleY(-1); }
 .corner-br { bottom: 30px; right: 30px; transform: scale(-1); }
 
-/* Logo spin */
-
-
-
-  to { transform: rotate(360deg); }
-}
-
-
-  50% { opacity: 1; transform: scale(1.1); }
-}
-
 .login-brand {
   font-family: 'UnifrakturMaguntia', cursive;
   font-size: 60px;
@@ -391,9 +380,6 @@ nav {
 
 
 
-  50% { transform: translateY(-12px); }
-}
-
 .hero-cta {
   margin-top: 40px; display: flex; gap: 20px; justify-content: center;
   opacity: 0; animation: fadeUp 0.9s ease 1.2s forwards;
@@ -558,7 +544,7 @@ nav {
   color: var(--white);
 }
 
-.about-right {}
+.about-right 
 .about-kicker {
   font-size: 10px; letter-spacing: 7px; color: var(--gold);
   text-transform: uppercase; margin-bottom: 20px; display: block;
@@ -729,7 +715,18 @@ nav {
 .editorial-attr { font-size: 10px; letter-spacing: 8px; color: var(--gray); text-transform: uppercase; }
 
 /* ============ CART ============ */
-.cart-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 2000; opacity: 0; visibility: hidden; transition: opacity 0.4s, visibility 0.4s; backdrop-filter: blur(6px); }
+.cart-overlay { 
+  position: fixed; 
+  inset: 0; 
+  background: rgba(0,0,0,0.7); 
+  z-index: 2000; 
+  opacity: 0; 
+  visibility: hidden;
+  transition: opacity 0.4s, visibility 0.4s; 
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+
 .cart-overlay.open { opacity: 1; visibility: visible; }
 .cart-drawer {
   position: fixed; top: 0; right: 0; bottom: 0; width: 420px;
@@ -776,7 +773,11 @@ nav {
 .cart-empty { text-align: center; padding: 70px 20px; color: var(--gray); font-size: 12px; letter-spacing: 4px; text-transform: uppercase; }
 .cart-empty-ico { font-size: 36px; margin-bottom: 14px; opacity: 0.25; }
 
-.cart-foot { padding: 24px 32px; border-top: 1px solid rgba(212,160,23,0.1); }
+.cart-foot { 
+  display: none; /* Hidden when cart is empty, shown when items are added */
+  padding: 24px 32px;
+  border-top: 1px solid rgba(212,160,23,0.1); }
+
 .cart-total-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
 .cart-total-lbl { font-size: 10px; letter-spacing: 5px; color: var(--gray); text-transform: uppercase; }
 .cart-total-val { font-family: 'Playfair Display', serif; font-size: 26px; color: var(--white); }
@@ -832,7 +833,14 @@ footer::before {
 .f-gem { color: var(--gold); opacity: 0.3; font-size: 12px; letter-spacing: 8px; }
 
 /* Modal */
-.modal-bg { position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 3000; display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transition: all 0.4s; backdrop-filter: blur(8px); }
+.modal-bg { position: fixed; inset: 0;
+   background: rgba(0,0,0,0.85); 
+  z-index: 3000; display: flex; align-items: center; 
+  justify-content: center; opacity: 0; visibility: hidden; transition: all 0.4s; 
+    -webkit-backdrop-filter: blur(8px); 
+     backdrop-filter: blur(8px);
+
+}
 .modal-bg.open { opacity: 1; visibility: visible; }
 .modal-box { background: var(--deep); border: 1px solid rgba(212,160,23,0.25); padding: 60px; max-width: 480px; width: 90%; text-align: center; transform: scale(0.92); transition: transform 0.4s; position: relative; }
 .modal-bg.open .modal-box { transform: scale(1); }

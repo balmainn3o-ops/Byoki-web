@@ -143,9 +143,13 @@ function renderCart(){
   const foot=document.getElementById('cart-foot');
   if(!cart.length){
     body.innerHTML=`<div class="cart-empty"><div class="cart-empty-ico">🛒</div><p>Your bag is empty</p></div>`;
-    foot.style.display='none'; return;
+/*************  ✨ Windsurf Command 🌟  *************/
+    foot.style.display='none';
+/*******  f301942a-c659-4ee1-8d44-4565c6ab4d41  *******/
   }
-  foot.style.display='block';
+/*************  ✨ Windsurf Command 🌟  *************/
+  foot.style.display='flex';
+/*******  664fd8aa-512a-491b-9210-06df69d2b5f1  *******/
   body.innerHTML=cart.map((it,i)=>`
     <div class="cart-item">
       <div class="ci-thumb">${it.emoji}</div>

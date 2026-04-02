@@ -30,10 +30,10 @@
   <div class="login-card">
     <span class="login-card-label">Private Access — Enter Code</span>
     <div class="code-inputs">
-      <input type="text" class="code-input" id="c1" maxlength="1" autocomplete="off">
-      <input type="text" class="code-input" id="c2" maxlength="1" autocomplete="off">
-      <input type="text" class="code-input" id="c3" maxlength="1" autocomplete="off">
-      <input type="text" class="code-input" id="c4" maxlength="1" autocomplete="off">
+      <input type="text" class="code-input" id="c1" maxlength="1" autocomplete="off" aria-label="Code digit 1" placeholder="·">
+      <input type="text" class="code-input" id="c2" maxlength="1" autocomplete="off" aria-label="Code digit 2" placeholder="·">
+      <input type="text" class="code-input" id="c3" maxlength="1" autocomplete="off" aria-label="Code digit 3" placeholder="·">
+      <input type="text" class="code-input" id="c4" maxlength="1" autocomplete="off" aria-label="Code digit 4" placeholder="·">
     </div>
     <button class="login-enter-btn" id="login-btn"><span>ENTER THE BYOKI</span></button>
     <div class="login-error" id="login-error">— Access Denied —</div>
@@ -65,7 +65,7 @@
 
     <div class="hero-content">
       <p class="hero-pre">House of Byoki — Est. 2026</p>
-      <div style="position:relative;display:inline-block;">
+      <div class="wordmark-wrap">
         <div class="hero-wordmark-shadow">BYOKI</div>
         <h1 class="hero-wordmark">BYOKI</h1>
       </div>
@@ -253,7 +253,7 @@
     <button class="cart-x" onclick="closeCart()">✕</button>
   </div>
   <div class="cart-body" id="cart-body"></div>
-  <div class="cart-foot" id="cart-foot" style="display:none">
+  <div class="cart-foot cart-foot--hidden" id="cart-foot">
     <div class="cart-total-row">
       <span class="cart-total-lbl">Total</span>
       <span class="cart-total-val" id="cart-total-val">R0</span>
