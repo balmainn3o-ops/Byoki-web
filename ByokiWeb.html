@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="ByokiWeb.css">
-<script src="ByokiWeb.js" defer type="module"></script>
+<!-- FIX 1: Removed type="module" — it was scoping all JS functions so onclick handlers couldn't find them -->
+<script src="ByokiWeb.js" defer></script>
 <title>BYOKI — Born Sad, Died Lit</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Bebas+Neue&family=UnifrakturMaguntia&family=Cinzel+Decorative:wght@400;700;900&family=Pirata+One&display=swap" rel="stylesheet">
-
 </head>
 <body>
 
@@ -22,7 +22,6 @@
   <div class="corner corner-tr"></div>
   <div class="corner corner-bl"></div>
   <div class="corner corner-br"></div>
-  
 
   <div class="login-brand">BYOKI</div>
   <div class="login-slogan">Born Sad, Died Lit</div>
@@ -30,6 +29,7 @@
   <div class="login-card">
     <span class="login-card-label">Private Access — Enter Code</span>
     <div class="code-inputs">
+      <!-- FIX 2: Added aria-label and placeholder to fix accessibility errors -->
       <input type="text" class="code-input" id="c1" maxlength="1" autocomplete="off" aria-label="Code digit 1" placeholder="·">
       <input type="text" class="code-input" id="c2" maxlength="1" autocomplete="off" aria-label="Code digit 2" placeholder="·">
       <input type="text" class="code-input" id="c3" maxlength="1" autocomplete="off" aria-label="Code digit 3" placeholder="·">
@@ -59,12 +59,13 @@
   <section id="hero">
     <div class="hero-bg-layer"></div>
     <div class="hero-texture"></div>
-    <img class="hero-bg-graphic" src="GRAPHIC_SRC" alt="">
+    <img class="hero-bg-graphic" src="GRAPHIC_SRC" alt="Byoki background graphic">
     <div class="hero-line-l"></div>
     <div class="hero-line-r"></div>
 
     <div class="hero-content">
       <p class="hero-pre">House of Byoki — Est. 2026</p>
+      <!-- FIX 3: Moved inline style to CSS class .wordmark-wrap -->
       <div class="wordmark-wrap">
         <div class="hero-wordmark-shadow">BYOKI</div>
         <h1 class="hero-wordmark">BYOKI</h1>
@@ -250,10 +251,11 @@
 <div class="cart-drawer" id="cart-drawer">
   <div class="cart-head">
     <div class="cart-head-title">Your Bag</div>
-    <button class="cart-x" onclick="closeCart()">✕</button>
+    <button class="cart-x" onclick="closeCart()" aria-label="Close cart">✕</button>
   </div>
   <div class="cart-body" id="cart-body"></div>
-  <div class="cart-foot cart-foot--hidden" id="cart-foot">
+  <!-- FIX 4: Moved style="display:none" to CSS class .cart-foot-hidden -->
+  <div class="cart-foot cart-foot-hidden" id="cart-foot">
     <div class="cart-total-row">
       <span class="cart-total-lbl">Total</span>
       <span class="cart-total-val" id="cart-total-val">R0</span>
