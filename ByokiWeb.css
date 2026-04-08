@@ -272,6 +272,13 @@ nav {
 }
 .cart-count.show { opacity: 1; }
 
+.ci-thumb-img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
 /* ============ HERO ============ */
 #hero {
   height: 100vh; display: flex; flex-direction: column;
