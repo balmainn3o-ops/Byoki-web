@@ -26,21 +26,32 @@
   <div class="login-brand">BYOKI</div>
   <div class="login-slogan">Born Sad, Died Lit</div>
 
-  <div class="login-card">
-    <span class="login-card-label">Private Access — Enter Code</span>
-    <div class="code-inputs">
-      <!-- FIX 2: Added aria-label and placeholder to fix accessibility errors -->
-      <input type="text" class="code-input" id="c1" maxlength="1" autocomplete="off" aria-label="Code digit 1" placeholder="·">
-      <input type="text" class="code-input" id="c2" maxlength="1" autocomplete="off" aria-label="Code digit 2" placeholder="·">
-      <input type="text" class="code-input" id="c3" maxlength="1" autocomplete="off" aria-label="Code digit 3" placeholder="·">
-      <input type="text" class="code-input" id="c4" maxlength="1" autocomplete="off" aria-label="Code digit 4" placeholder="·">
+  <div class="login-card countdown-card">
+    <span class="login-card-label">Collection Unlocks In</span>
+
+    <div class="countdown-wrap">
+      <div class="time-box">
+        <span id="days">00</span>
+        <small>Days</small>
+      </div>
+      <div class="time-box">
+        <span id="hours">00</span>
+        <small>Hours</small>
+      </div>
+      <div class="time-box">
+        <span id="minutes">00</span>
+        <small>Minutes</small>
+      </div>
+      <div class="time-box">
+        <span id="seconds">00</span>
+        <small>Seconds</small>
+      </div>
     </div>
-    <button class="login-enter-btn" id="login-btn"><span>ENTER THE BYOKI</span></button>
-    <div class="login-error" id="login-error">— Access Denied —</div>
-    <div class="login-hint">Code: <em>B S D L</em></div>
+
+
+    <div class="login-hint" id="countdown-message">Drop pending...</div>
   </div>
 </div>
-
 <!-- =========== MAIN SITE =========== -->
 <div id="main-site">
   <nav>

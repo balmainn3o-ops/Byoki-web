@@ -34,39 +34,117 @@ const dustEl = document.getElementById('dust');
   }
 });
 
-// LOGIN
-const CODE=['B','S','D','L'];
-const inputs=[1,2,3,4].map(i=>document.getElementById('c'+i));
-inputs[0].focus();
-inputs.forEach((inp,i)=>{
-  inp.addEventListener('input',e=>{
-    inp.value=e.target.value.toUpperCase();
-    inp.classList.toggle('filled',inp.value.length>0);
-    if(inp.value&&i<3) inputs[i+1].focus();
-  });
-  inp.addEventListener('keydown',e=>{
-    if(e.key==='Backspace'&&!inp.value&&i>0){ inputs[i-1].focus(); inputs[i-1].value=''; inputs[i-1].classList.remove('filled'); }
-    if(e.key==='Enter') tryLogin();
-  });
-});
-document.getElementById('login-btn').addEventListener('click',tryLogin);
-function tryLogin(){
-  const vals=inputs.map(i=>i.value.toUpperCase());
-  if(CODE.every((c,i)=>vals[i]===c)){
-    document.getElementById('login-page').classList.add('hidden');
-    const main=document.getElementById('main-site');
-    main.style.display='block';
-    setTimeout(()=>main.classList.add('visible'),60);
-  } else {
-    const err=document.getElementById('login-error'); err.classList.add('show');
-    inputs.forEach(inp=>{ inp.style.borderColor='#c0272d'; inp.style.boxShadow='0 0 12px rgba(192,39,45,0.3)'; });
-    setTimeout(()=>{
-      err.classList.remove('show');
-      inputs.forEach(inp=>{ inp.value=''; inp.classList.remove('filled'); inp.style.borderColor=''; inp.style.boxShadow=''; });
-      inputs[0].focus();
-    },1600);
-  }
+const launchDate = new Date("2026-05-01T00:00:00").getTime(); // change this
+const daysEl = document.getElementById("days");
+const hoursEl = document.getElementById("hours");
+const minutesEl = document.getElementById("minutes");
+const secondsEl = document.getElementById("seconds");
+const messageEl = document.getElementById("countdown-message");
+
+let opened = false;
+
+function openSite() {
+  if (opened) return;
+  opened = true;
+
+  document.getElementById("login-page").classList.add("hidden");
+  const main = document.getElementById("main-site");
+  main.style.display = "block";
+  setTimeout(() => main.classList.add("visible"), 60);
 }
+
+function updateCountdown() {
+  const now = new Date().getTime();
+  const distance = launchDate - now;
+
+  if (distance <= 0) {
+    daysEl.textContent = "00";
+    hoursEl.textContent = "00";
+    minutesEl.textContent = "00";
+    secondsEl.textContent = "00";
+    messageEl.textContent = "The drop is live.";
+    openSite();
+    return;
+  }
+
+  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  daysEl.textContent = String(days).padStart(2, "0");
+  hoursEl.textContent = String(hours).padStart(2, "0");
+  minutesEl.textContent = String(minutes).padStart(2, "0");
+  secondsEl.textContent = String(seconds).padStart(2, "0");
+}
+
+updateCountdown();
+setInterval(updateCountdown, 1000);
+function openSite() {
+  if (opened) return;
+  opened = true;
+
+  document.getElementById("login-page").classList.add("hidden");
+  const main = document.getElementById("main-site");
+  main.style.display = "block";
+  setTimeout(() => main.classList.add("visible"), 60);
+}
+
+function updateCountdown() {
+  const now = new Date().getTime();
+  const distance = launchDate - now;
+
+  if (distance <= 0) {
+    daysEl.textContent = "00";
+    hoursEl.textContent = "00";
+    minutesEl.textContent = "00";
+    secondsEl.textContent = "00";
+    messageEl.textContent = "The drop is live.";
+    openSite();
+    return;
+  }
+
+  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  daysEl.textContent = String(days).padStart(2, "0");
+  hoursEl.textContent = String(hours).padStart(2, "0");
+  minutesEl.textContent = String(minutes).padStart(2, "0");
+  secondsEl.textContent = String(seconds).padStart(2, "0");
+}
+
+updateCountdown();
+setInterval(updateCountdown, 1000);
+
+
+function updateCountdown() {
+  const now = new Date().getTime();
+  const distance = launchDate - now;
+
+  if (distance <= 0) {
+    daysEl.textContent = "00";
+    hoursEl.textContent = "00";
+    minutesEl.textContent = "00";
+    secondsEl.textContent = "00";
+    messageEl.textContent = "The drop is live.";
+    return;
+  }
+
+  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  daysEl.textContent = String(days).padStart(2, "0");
+  hoursEl.textContent = String(hours).padStart(2, "0");
+  minutesEl.textContent = String(minutes).padStart(2, "0");
+  secondsEl.textContent = String(seconds).padStart(2, "0");
+}
+
+updateCountdown();
+setInterval(updateCountdown, 1000);
 
 // PRODUCTS
 const PRODS = [
