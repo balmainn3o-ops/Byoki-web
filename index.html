@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="ByokiWeb (update).css">
+<!-- FIX 1: Removed type="module" — it was scoping all JS functions so onclick handlers couldn't find them -->
+<script src="ByokiWeb (update).js" defer></script>
+<title>BYOKI — Born Sad, Died Lit</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Bebas+Neue&family=UnifrakturMaguntia&family=Cinzel+Decorative:wght@400;700;900&family=Pirata+One&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- =========== LOGIN =========== -->
+
+<!-- =========== MAIN SITE =========== -->
+<div id="main-site">
+  <nav>
+    <span class="nav-logo" onclick="goto('hero')">BYOKI</span>
+    <ul class="nav-links">
+      <li><a onclick="goto('shop')">Collection</a></li>
+      <li><a onclick="goto('about')">Manifesto</a></li>
+      <li><a>Lookbook</a></li>
+    </ul>
+    <button class="cart-btn" onclick="openCart()">
+      Bag <span class="cart-count" id="cart-count">0</span>
+    </button>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-bg-layer"></div>
+    <div class="hero-texture"></div>
+    <img class="hero-bg-graphic" src="GRAPHIC_SRC" alt="Byoki background graphic">
+    <div class="hero-line-l"></div>
+    <div class="hero-line-r"></div>
+
+    <div class="hero-content">
+      <p class="hero-pre">House of Byoki — Est. 2026</p>
+      <!-- FIX 3: Moved inline style to CSS class .wordmark-wrap -->
+      <div class="wordmark-wrap">
+        <div class="hero-wordmark-shadow">BYOKI</div>
+        <h1 class="hero-wordmark">BYOKI</h1>
+      </div>
+      <div class="hero-divider">
+        <div class="hero-divider-line"></div>
+        <span class="hero-divider-gem">◆</span>
+        <div class="hero-divider-line"></div>
+      </div>
+      <p class="hero-slogan"><em>Born Sad,</em> &nbsp;Died Lit</p>
+      <div class="hero-cta">
+        <button class="btn-gold" onclick="goto('shop')">SHOP THE DROP</button>
+        <button class="btn-outline-red" onclick="goto('about')">OUR STORY</button>
+      </div>
+    </div>
+
+    <div class="scroll-cue">
+      <span>Discover</span>
+      <div class="scroll-cue-line"></div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee-wrap">
+    <div class="marquee-inner">
+      <span class="mi">Born Sad <span class="mi-gem">◆</span></span>
+      <span class="mi">Died Lit <span class="mi-gem">◆</span></span>
+      <span class="mi">Byoki <span class="mi-gem">◆</span></span>
+      <span class="mi">Born Sad <span class="mi-gem">◆</span></span>
+      <span class="mi">Street Baroque <span class="mi-gem">◆</span></span>
+      <span class="mi">Limited Edition <span class="mi-gem">◆</span></span>
+      <span class="mi">Born Sad <span class="mi-gem">◆</span></span>
+      <span class="mi">Died Lit <span class="mi-gem">◆</span></span>
+      <span class="mi">Byoki <span class="mi-gem">◆</span></span>
+      <span class="mi">Born Sad <span class="mi-gem">◆</span></span>
+      <span class="mi">Street Baroque <span class="mi-gem">◆</span></span>
+      <span class="mi">Limited Edition <span class="mi-gem">◆</span></span>
+      <span class="mi">Born Sad <span class="mi-gem">◆</span></span>
+      <span class="mi">Died Lit <span class="mi-gem">◆</span></span>
+      <span class="mi">Byoki <span class="mi-gem">◆</span></span>
+      <span class="mi">Born Sad <span class="mi-gem">◆</span></span>
+      <span class="mi">Street Baroque <span class="mi-gem">◆</span></span>
+      <span class="mi">Limited Edition <span class="mi-gem">◆</span></span>
+    </div>
+  </div>
+
+  <!-- FEATURES -->
+  <div class="feature-strip">
+    <div class="feat">
+      <div class="feat-number">01</div>
+      <div class="feat-title">The Craft</div>
+      <p class="feat-text">Every piece is cut, sewn and finished to standards most brands don't bother with. We're not here to cut corners — only fabric.</p>
+    </div>
+    <div class="feat">
+      <div class="feat-number">02</div>
+      <div class="feat-title">The Ethos</div>
+      <p class="feat-text">Byoki means sick. The kind that separates those who stayed lit when everything went dark. We wear what others are afraid to feel.</p>
+    </div>
+    <div class="feat">
+      <div class="feat-number">03</div>
+      <div class="feat-title">The Drop</div>
+      <p class="feat-text">No restocks. No seconds. Each release is a moment in time. Once it's gone, it's gone. That's not a sales tactic — that's the truth.</p>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="about-inner">
+      <div class="about-left">
+        <div class="about-graphic-frame">
+          <div class="about-graphic-bg"></div>
+          <div class="about-corner-dec acd-tl"></div>
+          <div class="about-corner-dec acd-tr"></div>
+          <div class="about-corner-dec acd-bl"></div>
+          <div class="about-corner-dec acd-br"></div>
+          <img class="about-graphic-img" src="GRAPHIC_SRC" alt="Born Sad, Died Lit">
+          <div class="about-tag">Born Sad. Died Lit.</div>
+        </div>
+      </div>
+      <div class="about-right">
+        <span class="about-kicker">◆ &nbsp;The Manifesto</span>
+        <h2 class="about-title">We Don't Follow.<br><em>We Lead.</em></h2>
+        <p class="about-body">Byoki was born from the South African streets. The streets at 3am when everything's honest. We took the word for <em>sick</em> and made it a crown.</p>
+        <p class="about-body">Born Sad is not a contradiction. It's the only honest design language for those who've seen both sides — the bottom and the top — and chose to own both.</p>
+        <div class="about-pull">"Born Sad. Crossed it out.<br>Died Lit. That's the story."</div>
+        <p class="about-body">Each piece is a chapter. Baroque cherubs carrying gold. Graffiti over scripture. Beauty that doesn't apologise for its scars.</p>
+        <div class="about-stat-row">
+          <div class="about-stat">
+            <div class="about-stat-num">100%</div>
+            <div class="about-stat-label">Limited Runs</div>
+          </div>
+          <div class="about-stat">
+            <div class="about-stat-num">ZA</div>
+            <div class="about-stat-label">Proudly South African</div>
+          </div>
+          <div class="about-stat">
+            <div class="about-stat-num">0</div>
+            <div class="about-stat-label">Compromises Made</div>
+          </div>
+          <div class="about-stat">
+            <div class="about-stat-num">∞</div>
+            <div class="about-stat-label">Culture Given</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDITORIAL STRIP -->
+  <div class="editorial-strip">
+    <div class="editorial-inner">
+      <div class="editorial-gem">◆ &nbsp; ◆ &nbsp; ◆</div>
+      <div class="editorial-quote">
+        "We came into this world <em>broke and sad</em>.<br>
+        We leave it <strong>lit and rich</strong> — or we don't leave."
+      </div>
+      <div class="editorial-attr">— Byoki, House Rules —</div>
+    </div>
+  </div>
+
+  <!-- SHOP -->
+  <section id="shop">
+    <div class="shop-inner">
+      <div class="section-head">
+        <span class="sh-eyebrow">◆ &nbsp;New Season</span>
+        <h2 class="sh-title">The <em>Collection</em></h2>
+        <p class="sh-sub">Limited runs &nbsp;·&nbsp; No restocks &nbsp;·&nbsp; Own something permanent</p>
+      </div>
+      <div class="products-grid" id="products-grid"></div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="f-logo-text">BYOKI</div>
+        <div class="f-slogan">Born Sad, Died Lit</div>
+        <div class="f-social">
+          <div class="f-soc">IG</div>
+          <div class="f-soc">TW</div>
+          <div class="f-soc">TK</div>
+          <div class="f-soc">YT</div>
+        </div>
+      </div>
+      <div class="f-col">
+        <h5>Shop</h5>
+        <ul>
+          <li><a onclick="goto('shop')">New Arrivals</a></li>
+          <li><a onclick="goto('shop')">Hoodies</a></li>
+          <li><a onclick="goto('shop')">Tees</a></li>
+          <li><a onclick="goto('shop')">Accessories</a></li>
+        </ul>
+      </div>
+      <div class="f-col">
+        <h5>House</h5>
+        <ul>
+          <li><a onclick="goto('about')">Manifesto</a></li>
+          <li><a>Lookbook</a></li>
+          <li><a>Collaborations</a></li>
+        </ul>
+      </div>
+      <div class="f-col">
+        <h5>Support</h5>
+        <ul>
+          <li><a>Sizing Guide</a></li>
+          <li><a>Shipping</a></li>
+          <li><a>Returns</a></li>
+          <li><a>Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-btm">
+      <p class="f-copy">© 2026 <em>Byoki</em>. All rights reserved. South Africa.</p>
+      <div class="f-gem">◆ &nbsp;◆ &nbsp;◆</div>
+      <p class="f-copy">Born Sad. <em>Died Lit.</em></p>
+    </div>
+  </footer>
+</div>
+
+<!-- CART -->
+<div class="cart-overlay" id="cart-overlay" onclick="closeCart()"></div>
+<div class="cart-drawer" id="cart-drawer">
+  <div class="cart-head">
+    <div class="cart-head-title">Your Bag</div>
+    <button class="cart-x" onclick="closeCart()" aria-label="Close cart">✕</button>
+  </div>
+  <div class="cart-body" id="cart-body"></div>
+  <!-- FIX 4: Moved style="display:none" to CSS class .cart-foot-hidden -->
+  <div class="cart-foot cart-foot-hidden" id="cart-foot">
+    <div class="cart-total-row">
+      <span class="cart-total-lbl">Total</span>
+      <span class="cart-total-val" id="cart-total-val">R0</span>
+    </div>
+    <button class="checkout-btn" onclick="checkout()">COMPLETE ORDER</button>
+  </div>
+</div>
+
+<!-- ORDER MODAL -->
+<div class="modal-bg" id="order-modal">
+  <div class="modal-box">
+    <h2>Order Received</h2>
+    <p>Your order is confirmed. A receipt is on its way.<br><br>Thank you for being part of the house. Stay lit.</p>
+    <button class="modal-cta" onclick="closeModal()">CLOSE</button>
+  </div>
+</div>
+
+</body>
+</html>
