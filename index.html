@@ -7,6 +7,10 @@
   <link rel="stylesheet" href="ByokiWeb (update).css" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Bebas+Neue&family=UnifrakturMaguntia&family=Cinzel+Decorative:wght@400;700;900&display=swap" rel="stylesheet" />
 </head>
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script>
+  emailjs.init("YOUR_PUBLIC_KEY");
+</script>
 <script>const cursor = document.getElementById("cursor");
 const cursorRing = document.getElementById("cursorRing");
 
@@ -30,7 +34,23 @@ const products = [
 ];
 
 let cart = [];
+newsletterForm.addEventListener("submit", function(e) {
+  e.preventDefault();
 
+  const email = document.getElementById("newsletter-email").value;
+
+  emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
+    user_email: email
+  })
+  .then(() => {
+    newsletterMessage.textContent = "YOU'RE IN. CHECK YOUR EMAIL.";
+    newsletterMessage.style.opacity = "1";
+    newsletterForm.reset();
+  })
+  .catch(() => {
+    newsletterMessage.textContent = "ERROR. TRY AGAIN.";
+  });
+});
 // CURSOR EFFECT
 if (cursor && cursorRing) {
   document.addEventListener("mousemove", (e) => {
