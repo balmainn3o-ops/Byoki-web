@@ -5,9 +5,223 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>BYOKI — Born Sad, Died Lit</title>
   <link rel="stylesheet" href="ByokiWeb (update).css" />
-  <script src="ByokiWeb (update).js" defer></script>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Bebas+Neue&family=UnifrakturMaguntia&family=Cinzel+Decorative:wght@400;700;900&display=swap" rel="stylesheet" />
 </head>
+<script>const cursor = document.getElementById("cursor");
+const cursorRing = document.getElementById("cursorRing");
+
+// BYOKI CART SYSTEM
+console.log("🛒 Cart script loaded");
+
+// PRODUCT DATA (UPDATED WITH IMAGES)
+const products = [
+  {
+    id: 1,
+    name: "Raising Angels Black Tee",
+    price: 450,
+    Image: "https://i.postimg.cc/xjgK14Ss/IMG-2661-Copy.jpg"
+  },
+  {
+    id: 2,
+    name: "Raising Angels White Tee",
+    price: 450,
+    Image: "https://i.postimg.cc/TP9gZLkV/IMG-2626.jpg"
+  }
+];
+
+let cart = [];
+
+// CURSOR EFFECT
+if (cursor && cursorRing) {
+  document.addEventListener("mousemove", (e) => {
+    cursor.style.left = e.clientX + "px";
+    cursor.style.top = e.clientY + "px";
+    cursorRing.style.left = e.clientX + "px";
+    cursorRing.style.top = e.clientY + "px";
+  });
+
+  document.addEventListener("mousedown", () => {
+    cursor.style.transform = "translate(-50%, -50%) scale(0.8)";
+    cursorRing.style.transform = "translate(-50%, -50%) scale(0.9)";
+  });
+
+  document.addEventListener("mouseup", () => {
+    cursor.style.transform = "translate(-50%, -50%) scale(1)";
+    cursorRing.style.transform = "translate(-50%, -50%) scale(1)";
+  });
+}
+
+// NAVIGATION
+function goto(sectionId) {
+  const section = document.getElementById(sectionId);
+  if (section) {
+    section.scrollIntoView({ behavior: "smooth" });
+  }
+}
+
+// ADD TO CART
+function addToCart(productId) {
+  console.log("Adding to cart:", productId);
+
+  const product = products.find((p) => p.id === Number(productId));
+  if (!product) return;
+
+  const existingItem = cart.find((item) => item.id === product.id);
+
+  if (existingItem) {
+    existingItem.quantity += 1;
+  } else {
+    cart.push({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      Image: product.Image,
+      quantity: 1
+    });
+  }
+
+  updateCartUI();
+  updateCartCount();
+  showAddedToCartFeedback();
+}
+
+// FEEDBACK ANIMATION
+function showAddedToCartFeedback() {
+  const cartBtn = document.querySelector(".cart-btn");
+  if (!cartBtn) return;
+
+  cartBtn.style.transform = "scale(1.08)";
+  cartBtn.style.background = "rgba(212,160,23,0.15)";
+
+  setTimeout(() => {
+    cartBtn.style.transform = "scale(1)";
+    cartBtn.style.background = "transparent";
+  }, 250);
+}
+
+// UPDATE CART UI
+function updateCartUI() {
+  const cartBody = document.getElementById("cart-body");
+  const cartFoot = document.getElementById("cart-foot");
+  const cartTotalVal = document.getElementById("cart-total-val");
+
+  if (!cartBody) return;
+
+  if (cart.length === 0) {
+    cartBody.innerHTML = `
+      <div class="cart-empty">
+        <div class="cart-empty-ico">👜</div>
+        Your bag is empty
+      </div>
+    `;
+    if (cartFoot) cartFoot.classList.add("cart-foot-hidden");
+    if (cartTotalVal) cartTotalVal.textContent = "R0";
+    return;
+  }
+
+  cartBody.innerHTML = cart.map((item, index) => `
+    <div class="cart-item">
+      <div class="ci-thumb">
+        <img src="${item.Image}" class="ci-thumb-img" alt="${item.name}">
+      </div>
+      <div class="ci-details">
+        <div class="ci-name">${item.name}</div>
+        <div class="ci-meta">Qty: ${item.quantity}</div>
+      </div>
+      <div class="ci-right">
+        <div class="ci-price">R${(item.price * item.quantity).toLocaleString()}</div>
+        <button class="ci-rm" data-remove-index="${index}">✕ Remove</button>
+      </div>
+    </div>
+  `).join("");
+
+  const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+
+  if (cartTotalVal) cartTotalVal.textContent = `R${total.toLocaleString()}`;
+  if (cartFoot) cartFoot.classList.remove("cart-foot-hidden");
+}
+
+// UPDATE CART COUNT
+function updateCartCount() {
+  const cartCount = document.getElementById("cart-count");
+  if (!cartCount) return;
+
+  const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+  cartCount.textContent = totalItems;
+
+  if (totalItems > 0) {
+    cartCount.classList.add("show");
+  } else {
+    cartCount.classList.remove("show");
+  }
+}
+
+// REMOVE ITEM
+function removeFromCart(index) {
+  cart.splice(index, 1);
+  updateCartUI();
+  updateCartCount();
+}
+
+// OPEN / CLOSE CART
+function openCart() {
+  document.getElementById("cart-overlay")?.classList.add("open");
+  document.getElementById("cart-drawer")?.classList.add("open");
+}
+
+function closeCart() {
+  document.getElementById("cart-overlay")?.classList.remove("open");
+  document.getElementById("cart-drawer")?.classList.remove("open");
+}
+
+// CHECKOUT
+function checkout() {
+  if (cart.length === 0) return;
+
+  alert("Order flow placeholder.");
+  cart = [];
+  updateCartUI();
+  updateCartCount();
+  closeCart();
+}
+
+// CLICK HANDLER
+document.addEventListener("click", (e) => {
+  const productBtn = e.target.closest(".product-cart-btn");
+  if (productBtn) {
+    addToCart(productBtn.dataset.productId);
+    return;
+  }
+
+  const removeBtn = e.target.closest(".ci-rm");
+  if (removeBtn) {
+    removeFromCart(Number(removeBtn.dataset.removeIndex));
+  }
+});
+
+// whatsapp handler//
+
+function checkout() {
+  if (cart.length === 0) return;
+
+  let message = "BYOKI ORDER:\n\n";
+
+  cart.forEach(item => {
+    message += `${item.name} x${item.quantity} - R${item.price * item.quantity}\n`;
+  });
+
+  const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+
+  message += `\nTotal: R${total}`;
+
+  // 🔥 IMPORTANT → replace with your number
+  const phoneNumber = "27815052404"; // e.g. 27831234567
+
+  const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+
+  window.open(whatsappURL, "_blank");
+}
+</script>
 <body>
 
   <div class="cursor" id="cursor"></div>
@@ -154,28 +368,28 @@
         <div class="products-simple">
           <div class="product-card">
             <div class="product-image">
-              <div class="product-emoji">🕊️</div>
+              <img src="https://i.postimg.cc/xjgK14Ss/IMG-2661-Copy.jpg" alt="Raising Angels Black Tee">
             </div>
             <div class="product-info">
               <h3>Raising Angels Black Tee</h3>
               <p>Premium good tee with custom print.</p>
               <div class="product-bottom">
                 <span class="price">R450</span>
-                <button class="product-cart-btn" onclick="addToCart(1)">ADD TO BAG</button>
+                <button class="product-cart-btn" data-product-id="1">ADD TO BAG</button>
               </div>
             </div>
           </div>
 
           <div class="product-card">
             <div class="product-image">
-              <div class="product-emoji">👑</div>
+              <img src="https://i.postimg.cc/mgNK549x/IMG-2626.jpg" alt="Raising Angels White Tee">
             </div>
             <div class="product-info">
               <h3>Raising Angels White Tee</h3>
               <p>Oversized fit with a clean premium finish.</p>
               <div class="product-bottom">
                 <span class="price">R450</span>
-                <button class="product-cart-btn" onclick="addToCart(2)">ADD TO BAG</button>
+                <button class="product-cart-btn" data-product-id="2">ADD TO BAG</button>
               </div>
             </div>
           </div>
@@ -192,11 +406,29 @@
         </div>
 
         <div class="lookbook-grid">
-          <div class="lookbook-item"><div class="lookbook-img">🕊️</div></div>
-          <div class="lookbook-item"><div class="lookbook-img">👑</div></div>
-          <div class="lookbook-item"><div class="lookbook-img">⚔️</div></div>
-          <div class="lookbook-item"><div class="lookbook-img">🔥</div></div>
-        </div>
+     <div class="lookbook-item">
+  <div class="lookbook-img">
+    <img src="https://i.postimg.cc/bwFRmFv9/IMG-2637-Copy.jpg" alt="">
+  </div>
+</div>
+
+<div class="lookbook-item">
+  <div class="lookbook-img">
+    <img src="https://i.postimg.cc/MpX7fbYp/IMG-2652-2-Copy.jpg" alt="">
+  </div>
+</div>
+
+<div class="lookbook-item">
+  <div class="lookbook-img">
+    <img src="https://i.postimg.cc/WbYrVqPt/IMG-2661-Copy.jpg alt="">
+  </div>
+</div>
+
+<div class="lookbook-item">
+  <div class="lookbook-img">
+    <img src="https://i.postimg.cc/2y8bRrc3/IMG-2666.jpg" alt="">
+  </div>
+</div>
       </div>
     </section>
 
@@ -266,7 +498,7 @@
         <span class="cart-total-lbl">Total</span>
         <span class="cart-total-val" id="cart-total-val">R0</span>
       </div>
-      <button class="checkout-btn" onclick="checkout()">COMPLETE ORDER</button>
+     <button class="checkout-btn" onclick="checkout()">COMPLETE ORDER</button>
     </div>
   </div>
 
