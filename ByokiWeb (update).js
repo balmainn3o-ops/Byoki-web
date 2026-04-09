@@ -36,6 +36,65 @@ const dustEl = document.getElementById('dust');
 
 /// COUNTDOWN ///
 
+const launchDate = new Date();
+launchDate.setHours(20, 0, 0, 0);
+
+const now = new Date();
+if (now > launchDate) {
+  launchDate.setDate(launchDate.getDate() + 1);
+}
+
+const targetTime = launchDate.getTime();
+
+const daysEl = document.getElementById("days");
+const hoursEl = document.getElementById("hours");
+const minutesEl = document.getElementById("minutes");
+const secondsEl = document.getElementById("seconds");
+const messageEl = document.getElementById("countdown-message");
+
+let opened = false;
+
+function openSite() {
+  if (opened) return;
+  opened = true;
+
+  document.getElementById("login-page").classList.add("hidden");
+  const main = document.getElementById("main-site");
+  main.style.display = "block";
+
+  setTimeout(() => {
+    main.classList.add("visible");
+  }, 60);
+}
+
+function updateCountdown() {
+  const now = new Date().getTime();
+  const distance = targetTime - now;
+
+  if (distance <= 0) {
+    daysEl.textContent = "00";
+    hoursEl.textContent = "00";
+    minutesEl.textContent = "00";
+    secondsEl.textContent = "00";
+    messageEl.textContent = "The drop is live.";
+    openSite();
+    return;
+  }
+
+  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  daysEl.textContent = String(days).padStart(2, "0");
+  hoursEl.textContent = String(hours).padStart(2, "0");
+  minutesEl.textContent = String(minutes).padStart(2, "0");
+  secondsEl.textContent = String(seconds).padStart(2, "0");
+}
+
+updateCountdown();
+setInterval(updateCountdown, 1000);
+
 // PRODUCTS
 const PRODS = [
   {

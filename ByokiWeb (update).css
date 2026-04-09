@@ -210,8 +210,14 @@ body {
 .login-hint em { color: rgba(212,160,23,0.5); font-style: normal; }
 
 /* ============ MAIN SITE ============ */
-#main-site { opacity: 0; transition: opacity 1.2s ease; }
-#main-site.visible { opacity: 1; }
+#main-site {
+  display: block;
+  opacity: 1;
+  transition: opacity 1.2s ease;
+}
+#main-site.visible {
+  opacity: 1;
+}
 
 /* NAV */
 nav {
